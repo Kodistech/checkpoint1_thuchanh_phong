@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profile · ByteForge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>try{var t=localStorage.getItem('bf_theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body data-page="profile">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header" id="siteHeader"></header>
+
+<main class="container" id="main">
+  <div id="configBanner" class="banner" hidden style="margin-bottom:18px">
+    <strong>Supabase isn’t connected yet.</strong> Set <code>SUPABASE_URL</code> and
+    <code>SUPABASE_ANON_KEY</code> at the top of <code>app.js</code>.
+  </div>
+  <div id="profileRoot" aria-live="polite">
+    <div class="sk sk-block"></div>
+  </div>
+</main>
+
+<footer class="site-footer" id="siteFooter"></footer>
+<div id="toasts" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+</body>
+</html>

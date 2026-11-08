@@ -71,7 +71,7 @@ $("loginForm").addEventListener("submit", async (e) => {
   setBusy($("loginBtn"), false, "Login");
 
   if (error) return showMsg(error.message, "error");
-  showMsg("Login successful! 🎃", "ok");
+  showMsg("Login successful! ", "ok");
 });
 
 $("googleBtn").addEventListener("click", async () => {

@@ -1,5 +1,6 @@
 // ───────────── 1. CONFIG: replace these two values ─────────────
-
+const SUPABASE_URL      = "https://vpxmkagnyqgdalwuzuod.supabase.co";       // e.g. https://abcdxyz.supabase.co
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZweG1rYWdueXFnZGFsd3V6dW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM0NzE0MzQsImV4cCI6MjEwOTA0NzQzNH0.-NZ7fG6OVy67jkHoViPa5rCrO91ODSUDcDf5mWF3D00";  // Project Settings → API → anon public key
 // ────────────────────────────────────────────────────────────
 
 const configured = !SUPABASE_URL.startsWith("YOUR_") && !SUPABASE_ANON_KEY.startsWith("YOUR_");
