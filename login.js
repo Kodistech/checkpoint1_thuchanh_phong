@@ -1,4 +1,7 @@
-
+// ───────────── 1. CONFIG: replace these two values ─────────────
+const SUPABASE_URL      = "https://vpxmkagnyqgdalwuzuod.supabase.co";       // e.g. https://abcdxyz.supabase
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZweG1rYWdueXFnZGFsd3V6dW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM0NzE0MzQsImV4cCI6MjEwOTA0NzQzNH0.-NZ7fG6OVy67jkHoViPa5rCrO91ODSUDcDf5mWF3D00";
+// ────────────────────────────────────────────────────────────
 
 const configured = !SUPABASE_URL.startsWith("YOUR_") && !SUPABASE_ANON_KEY.startsWith("YOUR_");
 const sb = configured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
@@ -83,7 +86,7 @@ $("googleBtn").addEventListener("click", async () => {
 $("logoutBtn").addEventListener("click", async () => {
   const { error } = await sb.auth.signOut();
   if (error) return alert(error.message);
-  showMsg("You’ve been logged out. See you next Halloween! 🎃", "ok");
+  showMsg("You’ve been logged out. Fuck You", "ok");
 });
 
 // ───────────── 4. Show the right view for the current session ─────────────
