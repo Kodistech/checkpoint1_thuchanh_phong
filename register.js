@@ -6,6 +6,7 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const configured = !SUPABASE_URL.startsWith("YOUR_") && !SUPABASE_ANON_KEY.startsWith("YOUR_");
 const sb = configured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 const loginPageUrl = new URL("login.html", window.location.href).href;
+const homeUrl = new URL("index.html", window.location.href).href;
 
 const $ = (id) => document.getElementById(id);
 if (!configured) $("configBanner").hidden = false;
@@ -81,8 +82,8 @@ $("signupForm").addEventListener("submit", async (e) => {
   if (!data.session)
     return showMsg("Signup successful! Check your inbox to confirm your email, then log in. 🎃", "ok");
 
-  showMsg("Signup successful! Taking you to your account… 🎃", "ok");
-  setTimeout(() => window.location.replace(loginPageUrl), 1200);
+  showMsg("Signup successful! Taking you home… 🎃", "ok");
+  setTimeout(() => window.location.replace(homeUrl), 1200);
 });
 
 $("googleBtn").addEventListener("click", async () => {
@@ -97,6 +98,6 @@ $("googleBtn").addEventListener("click", async () => {
 // Already signed in? Skip the signup page.
 if (configured) {
   sb.auth.getSession().then(({ data }) => {
-    if (data.session) window.location.replace(loginPageUrl);
+    if (data.session) window.location.replace(homeUrl);
   });
 }

@@ -234,7 +234,7 @@ async function logout() {
   if (!sb) return;
   const { error } = await sb.auth.signOut();
   if (error) return toast(errMsg(error), 'error');
-  toast('You’ve been logged out.', 'success');
+  goAuth();
 }
 
 /* ───────────── 4. LAYOUT / UI ───────────── */

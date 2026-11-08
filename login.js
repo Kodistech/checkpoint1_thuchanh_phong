@@ -6,6 +6,7 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const configured = !SUPABASE_URL.startsWith("YOUR_") && !SUPABASE_ANON_KEY.startsWith("YOUR_");
 const sb = configured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 const loginPageUrl = new URL("login.html", window.location.href).href;
+const homeUrl = new URL("index.html", window.location.href).href;
 
 const $ = (id) => document.getElementById(id);
 if (!configured) $("configBanner").hidden = false;
@@ -71,7 +72,7 @@ $("loginForm").addEventListener("submit", async (e) => {
   setBusy($("loginBtn"), false, "Login");
 
   if (error) return showMsg(error.message, "error");
-  showMsg("Login successful! ", "ok");
+  // The SIGNED_IN listener below redirects to the home page once this succeeds.
 });
 
 $("googleBtn").addEventListener("click", async () => {
@@ -86,7 +87,7 @@ $("googleBtn").addEventListener("click", async () => {
 $("logoutBtn").addEventListener("click", async () => {
   const { error } = await sb.auth.signOut();
   if (error) return alert(error.message);
-  showMsg("You’ve been logged out. Fuck You", "ok");
+  showMsg("You’ve been logged out.", "ok");
 });
 
 // ───────────── 4. Show the right view for the current session ─────────────
@@ -102,5 +103,8 @@ function render(session) {
 
 if (configured) {
   sb.auth.getSession().then(({ data }) => render(data.session));
-  sb.auth.onAuthStateChange((_event, session) => render(session));
+  sb.auth.onAuthStateChange((event, session) => {
+    render(session);
+    if (event === "SIGNED_IN") window.location.replace(homeUrl); // just logged in here: go straight home
+  });
 }
